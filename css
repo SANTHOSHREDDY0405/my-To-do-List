@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background:green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ height: 100vh;
+
+}
+
+.App {
+  text-align: center;
+}
+li{
+  list-style: none;
+}
+.TodoWrapper {
+  background: #1A1A40;
+  margin-top: 5rem;
+  padding: 2rem;
+  border-radius: 5px;
+}
+
+.TodoForm {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  background: #8758ff;
+  color: #fff;
+  border: none;
+  padding: 0.35rem;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.Todo {
+  display: flex;
+  margin-top: 10px;
+  justify-content: space-between;
+  align-items: center;
+  /* background:red; */
+  color:gold;
+  font-size: large;
+  padding: 0.025rem 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+
+.edit-icon,
+.delete-icon {
+  cursor: pointer;
+}
+.do{
+  background-color: aqua;
+  border-radius: 3px;
+  
+}

@@ -1,0 +1,60 @@
+import React, { useState, useRef } from 'react';
+import styles from './app.module.css'
+const Todo = () => {
+  const [task, setTask] = useState('');
+  const [list, setList] = useState([]);
+  const [editIndex, setEditIndex] = useState(null);
+  const taskRef = useRef();
+
+  const handleChange = (e) => {
+    setTask(e.target.value);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (editIndex !== null) {
+      // If editing, update the task at the editIndex
+      const updatedList = [...list];
+      updatedList[editIndex] = task;
+      setList(updatedList);
+      setEditIndex(null); // Reset editIndex after editing
+    } else {
+      setList([...list, task]);
+    }
+    setTask('');
+  }
+
+  const handleEdit = (index) => {
+    setTask(list[index]);
+    setEditIndex(index);
+  }
+
+  const handleDelete = (index) => {
+    const updatedList = list.filter((_, i) => i !== index);
+    setList(updatedList);
+    setEditIndex(null); // Reset editIndex after deleting
+  }
+
+  return (
+    <div>
+      <h1>To-do-List</h1>
+      <div className={styles.do}>
+      <form onSubmit={handleSubmit}>
+        <input type="text" value={task} onChange={handleChange} ref={taskRef} />
+        <button type="submit">{editIndex !== null ? 'Update' : 'Add'}</button>
+      </form>
+      <ul>
+        {list.map((item, index) => (
+          <li key={index} className={styles.Todo}>
+            {item}
+            <button className={styles.btn} onClick={() => handleEdit(index)}>Edit</button>
+            <button className={styles.btn} onClick={() => handleDelete(index)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+      </div>
+    </div>
+  );
+}
+
+export default Todo;
